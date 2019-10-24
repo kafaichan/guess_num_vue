@@ -1,0 +1,23 @@
+<div id="app">
+  Current Number: {{ number }}
+  <button v-on:click="subtract">-</button>
+  <button v-on:click="add">+</button>
+</div>
+
+<script>
+new Vue(
+{
+  el: "#app",
+  data: {
+    number: 0
+  },
+  methods: {
+    subtract() {
+      this.number--;
+    },
+    add() {
+      this.number++;
+    }
+  }
+});
+</script>

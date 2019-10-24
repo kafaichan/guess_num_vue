@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<input type="hidden" :value="answer"/>
+			<input type="text" v-model="guess_num">
+			<p>{{hint_msg}}</p>
+			<p v-if="debug">{{answer}}</p>
+			<button @click="redraw" :disabled="answer!=guess_num">Start A New Round</button>
+		</div>
+
+		<script>
+			function randInt(min, max){
+				return Math.floor(Math.random() * (max-min+1)) + min;
+			}
+			new Vue({
+				el: "#app",
+				data: {
+					answer: randInt(0, 101),
+					guess_num: 0,
+					debug: false
+				},
+				computed: {
+					hint_msg: function(){
+						if(this.guess_num < this.answer){
+							return "Try a larger number";
+						}else if (this.guess_num > this.answer) {
+							return "Try a smaller number";
+						}else if(this.guess_num == this.answer){	
+							return "Bingo!";
+						}						
+					}
+				},
+				watch: {
+					guess_num: function(newval, oldval) {
+						if(isNaN(newval)){							
+							this.guess_num = oldval;
+						}
+					}
+				},
+				methods: {
+					redraw() {
+						this.answer = randInt(0, 101)
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

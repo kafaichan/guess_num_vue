@@ -1,0 +1,12 @@
+<div id="app">
+  <a v-bind:href="website_url">{{website_name}}</a>
+</div>
+
+new Vue(
+{
+  el: "#app",
+  data: {
+    website_url: "https://www.google.com",
+    website_name: "Google"
+  }
+})

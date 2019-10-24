@@ -1,0 +1,14 @@
+<div id="app">
+  <h1 v-if="isDisplayed">Good Evening!</h1>
+  <h1 v-else>Not Displayed</h1>
+  <button @click="isDisplayed=!isDisplayed">Toggle Display</button>
+</div>
+
+<script>
+new Vue({
+  el: "#app",
+  data: {
+    isDisplayed: true
+  }
+})
+</script>

@@ -1,0 +1,21 @@
+<div id="app">
+  <ul>
+    <li @click="clickHandler" :data-name="product" v-for="(product,index) in products">{{index+1}}, {{product}}</li>
+  </ul>
+</div>
+
+<script>
+new Vue(
+  {
+    el: "#app",
+    data: {
+      products: ["Apple Watch", "Macbook", "Apple TV", "IPhone"]
+    },
+    methods: {
+      clickHandler(event) {
+        alert(event.currentTarget.getAttribute("data-name"));
+      }
+    }
+  }
+)
+</script>
